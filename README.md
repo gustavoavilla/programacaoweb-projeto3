@@ -17,7 +17,7 @@ O projeto foi hospedado no GitHub Pages, e pode ser acessado através deste <a h
 PROJETO 3 - Express.js: No PROJETO 3, também deve ser dada continuidade aplicação ao web desenvolvida no PROJETO 2, mas devem ser implementadas as funcionalidades do lado servidor que foram utilizadas no PROJETO 2.
 
 Para a elaboração deste projeto foi utilizado o site <a href="https://www.pixabay.com">Pixabay</a> como base para o modelo.
-O projeto foi hospedado no Heroku, e pode ser acessado através deste <a href="https://loom.com.br">link</a>.
+O projeto foi hospedado no Heroku, e pode ser acessado através deste <a href="https://loom.com">link</a>.
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 Desenvolvido por Gustavo Henrique Tavares de Avilla, RA:1827316
