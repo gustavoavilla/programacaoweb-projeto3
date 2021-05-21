@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>- Pixabay</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/style/style.css">
+</head>
+    <body>
+        <header class="menu">
+          <div class="pixabay" >
+                <a href="/"><img src="/images/logop.svg" alt="logo Pixabay"></a>
+              </div>
+              <div class= "menuesquerda">
+                <ul>
+            <li><a href="#">Fotos</a></li>
+            <li><a href="#">Ilustrações</a></li>
+            <li><a href="#">Vectores</a></li>
+            <li><a href="#">Videos</a></li>
+            <li><a href="#">Música</a></li>
+                </ul>
+              </div>
+              <div class="menudireita">
+                <ul>
+            <li><a href="#">Explorar &#160;						<span class="dropdown1">
+                  <img src="/images/icon-explorar.svg" alt="dropdown1">
+                </span></a></li>
+            <li><a href="logout" id="btn_inicio">Logout &#160;&#160;&#160;&#160;&#160;&#160;&#160;</a></li>
+              <li><a href="/tela_publicacao"><span class="bt-verde">
+              <img src="/images/icon-btverde.svg" alt="bt-verde">&#160;&#160;Carregar
+              </span></a></li>
+                </ul>
+              </div>
+                <div class="icon-menu">
+              <a href="logout" id="icon_drop"> <span class="icon-menu">
+                <img src="/images/icon-menu.png" style="margin-top:-5px"alt="icon-menu">
+              </span></a>
+          </div>
+        </header>
+        <div class="corpo2">
+            <div class="teste2">
+                <div class="topo_busca">
+                    <div class="search_busca">
+                        <form action="/busca" id="forms2" method="post">
+                            <input type="text" class="search_busca" name="busca" id="livesearch" autocomplete="off" placeholder="Procurar arquivos"/>
+                            <img src="../images/barra.svg" class="search" alt="Buscar"/>
+                            <div id="sugestoes" style="color:black; overflow: hidden; font-size:10px;"></div>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="/tela_publicacao"><button class="Add" type="submit">Adicionar arquivo</button></form>
+                    </div>
+                </div>
+                <div class="busca_up">
+                    <a class="pub" style="font-size: 24px; color:black;"><%= message %></a>
+                <% data.forEach(function(details)
+                { %>
+                    <div class="img_up">  <!--seleciona o tipo de arquivo, para o icone correspondente -->
+                        <%if (details.tipo != 'jpg' && details.tipo != 'png')
+                        { %>
+                            <%if (  details.tipo == 'mp4' || details.tipo == 'avi' || details.tipo == 'mpg' ||
+                                    details.tipo == 'wmv' || details.tipo == '3gp' || details.tipo == 'mkv' ||
+                                    details.tipo == 'flv' || details.tipo == 'm4v' || details.tipo == 'mov' ||
+                                    details.tipo == 'mkv')
+                            { %>
+                                <div>
+                                    <a href="../public/upload/<%= details.name %>.<%= details.tipo %>" target="_blank">
+                                        <img src="../public/upload/type/video.png" height="125" width="125" alt="<%= details.name %>"></img>
+                                    </a>
+                                </div>
+                            <% }
+                            else if (   details.tipo == 'mp3' || details.tipo == 'm4a' || details.tipo == 'aac' ||
+                                        details.tipo == 'ogg' || details.tipo == 'wma' || details.tipo == 'flac' ||
+                                        details.tipo == 'wav')
+                            { %>
+                                <div>
+                                    <a href="../public/upload/<%= details.name %>.<%= details.tipo %>" target="_blank">
+                                        <img src="../public/upload/type/audio.png" height="125" width="125" alt="<%= details.name %>"></img>
+                                    </a>
+                                </div>
+                            <% }
+                            else if (   details.tipo == 'css' || details.tipo == 'exe' || details.tipo == 'html' ||
+                                        details.tipo == 'pdf' || details.tipo == 'rar' || details.tipo == 'txt' ||
+                                        details.tipo == 'zip'){ %>
+                                <div>
+                                    <a href="../public/upload/<%= details.name %>.<%= details.tipo %>" target="_blank">
+                                        <img src="../public/upload/type/<%= details.tipo %>.png" height="125" width="125" alt="<%= details.name %>"></img>
+                                    </a>
+                                </div>
+                            <% }
+                            else {%>
+                                <div>
+                                    <a href="../public/upload/<%= details.name %>.<%= details.tipo %>" target="_blank">
+                                        <img src="../public/upload/type/file.png" height="125" width="125" alt="<%= details.name %>"></img>
+                                    </a>
+                                </div>
+                            <% } %>
+                        <% }
+                        else { %>
+                            <div>
+                                <a href="../public/upload/<%= details.name %>.<%= details.tipo %>" target="_blank">
+                                    <img src="../public/upload/<%= details.name %>.<%= details.tipo %>" height="125" width="125" alt="<%= details.name %>"></img>
+                                </a>
+                            </div>
+                        <% } %>
+
+                        <div style="display:flex; justify-content:center; align-items: center; margin-bottom: 10px; color: black; font-size: 14px">
+                            <span><%= details.name %>.<%= details.tipo %><br><%= details.privacidade %></span>
+
+                        </div>
+                    </div>
+                <% }) %>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" charset="utf-8">
+            document.getElementsByTagName("input")[0]
+                .addEventListener("keyup", function () {
+                    let busca = document.getElementById("livesearch").value;
+                    let sugestoes = document.getElementById("sugestoes");
+                    let xmlhttp = new XMLHttpRequest();
+                    if (busca == "") {
+                        sugestoes.innerHTML = "";
+                        sugestoes.style.padding = "0px";
+                        return;
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        document.getElementById("sugestoes").innerHTML = "<span style='color: black'></span>";
+                        sugestoes.style.padding = '5px';
+                        if (this.readyState == 4 && this.status == 200) {
+                            let myJson = JSON.parse(xmlhttp.responseText);
+                            let string = "";
+                          myJson.forEach((result, index) => {
+                                string +=   "<div onclick= \"setValue('" + result.name + "')\"><span style='color: black' >"
+                                            + result.name + "</span></div>";
+                            });
+                            sugestoes.innerHTML = string;
+                        }
+                    }
+                    xmlhttp.open("GET", "livesearch_private/" + busca, true);
+                    xmlhttp.send();
+                });
+            function setValue(str) {
+                document.getElementById("livesearch").value = str;
+                document.getElementById("sugestoes").innerHTML = "";
+                document.getElementById("sugestoes").style.padding = "0px";
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>- Pixabay</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/style/style.css">
+</head>
+    <body>
+        <header class="menu">
+          <div class="pixabay" >
+                  <a href="/"><img src="/images/logop.svg" alt="logo Pixabay"></a>
+              </div>
+              <div class= "menuesquerda">
+                <ul>
+            <li><a href="#">Fotos</a></li>
+            <li><a href="#">Ilustrações</a></li>
+            <li><a href="#">Vectores</a></li>
+            <li><a href="#">Videos</a></li>
+            <li><a href="#">Música</a></li>
+                </ul>
+              </div>
+              <div class="menudireita">
+                <ul>
+            <li><a href="#">Explorar &#160;						<span class="dropdown1">
+                  <img src="/images/icon-explorar.svg" alt="dropdown1">
+                </span></a></li>
+            <li><a href="login" id="btn_inicio">Efetuar login</a></li>
+            <li><a href="cadastro_usuario" id="link2_cadastrar">Join&#160;&#160;&#160;&#160;&#160;&#160;</a></li>
+            <li><a href="tela_publicacao"><span class="bt-verde">
+              <img src="/images/icon-btverde.svg" alt="bt-verde">&#160;&#160;Carregar
+              </span></a></li>
+                </ul>
+              </div>
+                <div class="icon-menu">
+              <a href="cadastro_usuario" id="icon_drop"> <span class="icon-menu">
+                <img src="/images/icon-menu.png" style="margin-top:-5px"alt="icon-menu">
+              </span></a>
+          </div>
+        </header>
+        <div class="teste">
+              <div class="elogin">
+                Efetuar login
+              </div>
+                <form action="login" method="POST">
+                    <input class="corpo" type="text" name="username" value=""placeholder="Nome do usuário">
+                    <div class="25">    &#160;   </div>
+                    <input class="corpo" type="password" name="password" value=""placeholder="Senha">
+                    <div class="elogin2"><%= message %></div>
+                    <button class="Sign-Up">Efetuar Login</button>
+                </form>
+        </div>
+        </div>
+    </body>
